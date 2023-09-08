@@ -1,0 +1,11 @@
+<h2>My Missions</h2>
+<ul class="missions">
+    <li *ngFor="let mission of missions">
+        <button (click)="onSelect(mission)">
+            <span>{{mission.reference}} - {{mission.expert}}</span>
+            <div *ngIf="isMissionSelected(mission)">
+                <app-mission-detail [mission]="selectedMission"></app-mission-detail>
+            </div>
+        </button>
+    </li>
+</ul>

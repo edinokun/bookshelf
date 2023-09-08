@@ -1,0 +1,18 @@
+.missions {
+    list-style-type: none;
+    padding: 0;
+}
+
+.missions li {
+    display: flex;
+}
+
+.missions button {
+    flex: 1;
+    border-color: black;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    margin: .5em;
+    padding: 2em;
+}
