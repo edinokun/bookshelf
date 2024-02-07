@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MISSIONS } from '../mock-missions';
-import { Mission } from '../mission';
+import { MISSIONS } from '../../assets/mock-missions';
+import { Mission } from '../../domain/mission';
 
 @Component({
   selector: 'app-missions',
@@ -8,7 +8,8 @@ import { Mission } from '../mission';
   styleUrls: ['./missions.component.css']
 })
 export class MissionsComponent {
-  selectedMission?: Mission
+  isAMissionSelected: boolean = false;
+  selectedMission?: Mission;
   missions = MISSIONS;
 
   isMissionSelected(mission: Mission) {
@@ -16,6 +17,12 @@ export class MissionsComponent {
   }
 
   onSelect(mission: Mission) {
-    this.selectedMission = mission;
+    if (!this.isAMissionSelected) {
+      this.selectedMission = mission;
+    } else {
+      this.selectedMission = undefined;
+    }
+
+    this.isAMissionSelected = !this.isAMissionSelected;
   }
 }

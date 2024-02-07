@@ -1,4 +1,4 @@
-import { Mission } from "./mission";
+import { Mission } from "../domain/mission";
 
 export const MISSIONS: Mission[] = [
     { id: 1, reference: 'TX23000001', expert: 'DI SILVESTRE Cristina' },

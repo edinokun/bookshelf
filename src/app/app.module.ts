@@ -8,6 +8,7 @@ import { NewsComponent } from './news/news.component';
 import { LeftComponent } from './left/left.component';
 import { FooterComponent } from './footer/footer.component';
 import { MissionDetailComponent } from './mission-detail/mission-detail.component';
+import { NewsElementComponent } from './news-element/news-element.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MissionDetailComponent } from './mission-detail/mission-detail.componen
     NewsComponent,
     LeftComponent,
     FooterComponent,
-    MissionDetailComponent
+    MissionDetailComponent,
+    NewsElementComponent
   ],
   imports: [
     BrowserModule

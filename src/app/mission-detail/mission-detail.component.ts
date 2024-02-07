@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Mission } from '../mission';
+import { Mission } from '../../domain/mission';
 
 @Component({
   selector: 'app-mission-detail',

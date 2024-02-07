@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NEWS } from 'src/assets/mock-news';
+import { News } from 'src/domain/news';
 
 @Component({
   selector: 'app-news',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-
+  news = NEWS;
 }

@@ -2,7 +2,7 @@
 <ul class="missions">
     <li *ngFor="let mission of missions">
         <button (click)="onSelect(mission)">
-            <span>{{mission.reference}} - {{mission.expert}}</span>
+            <span>Reference: {{mission.reference}} - Expert: {{mission.expert}}</span>
             <div *ngIf="isMissionSelected(mission)">
                 <app-mission-detail [mission]="selectedMission"></app-mission-detail>
             </div>
