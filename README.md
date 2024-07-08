@@ -1,3 +1,3 @@
-# MyApp
+# Bookshelf
 
-This application is based on Angular 16.
+A bookshelf where to collect all your books.
