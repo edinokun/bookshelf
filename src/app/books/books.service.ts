@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
-import { Book } from "src/domain/book";
+import { map, Observable, tap } from "rxjs";
+import { Book } from "../book/book";
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -13,6 +13,9 @@ export class BooksService {
 
     getBooks(): Observable<Book[]> {
         return this.http.get<{ items: Book[] }>(this.apiUrl)
-          .pipe(map((books) => books.items || []));
+          .pipe(
+            map((books) => books.items || []),
+            tap((books) => console.log('Fetching complete: ' + books.length + ' books fetched!'))
+        );
     }
 }
