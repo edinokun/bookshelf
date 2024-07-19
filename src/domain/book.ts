@@ -1,6 +1,7 @@
 export interface Book {
-    id: number,
-    name: string,
-    author: string,
-    review: string
+    id: string;
+    volumeInfo: {
+        title: string;
+        authors: Array<string>;
+    };
 }

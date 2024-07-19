@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Book } from "src/domain/book";
 import { HttpClient } from '@angular/common/http';
 
@@ -7,11 +7,12 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class BooksService {
-    private apiUrl = 'http://localhost:3000/books';
+    private apiUrl = 'https://www.googleapis.com/books/v1/volumes?maxResults=5&orderBy=relevance&q=oliver%20sacks';
 
     constructor(private http: HttpClient) { }
 
     getBooks(): Observable<Book[]> {
-        return this.http.get<Book[]>(this.apiUrl);
+        return this.http.get<{ items: Book[] }>(this.apiUrl)
+          .pipe(map((books) => books.items || []));
     }
 }
