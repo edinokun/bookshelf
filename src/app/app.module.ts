@@ -12,10 +12,12 @@ import { CommonModule } from "@angular/common";
 import { AboutComponent } from './about/about.component';
 import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { StoreModule } from '@ngrx/store';
+import { booksReducer } from "./state/books.reducers";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, BooksComponent, BookComponent, AboutComponent, AddComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, CommonModule, ReactiveFormsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, CommonModule, ReactiveFormsModule, StoreModule.forRoot({ books: booksReducer})],
   providers: [BooksService],
   bootstrap: [AppComponent]
 })
