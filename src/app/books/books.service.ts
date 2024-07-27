@@ -3,7 +3,7 @@ import { map, Observable, tap } from "rxjs";
 import { Book } from "../book/book";
 import { HttpClient } from '@angular/common/http';
 import { Store } from "@ngrx/store";
-import { BooksActions } from "../state/books.actions";
+import { addBook } from "../state/books.actions";
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +21,10 @@ export class BooksService {
             );
     }
 
-    addBook(book: Book) {
-        this.store.dispatch(BooksActions.addBook({ book }));
+    addBook(book: Book): Observable<Book> {
+        return new Observable<Book>(observer => {
+            observer.next(book);
+            observer.complete();
+        });
     }
 }

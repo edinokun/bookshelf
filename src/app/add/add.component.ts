@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BooksService } from '../books/books.service';
 import { Book } from '../book/book';
 import * as uuid from 'uuid';
+import { Store } from '@ngrx/store';
+import { addBook } from '../state/books.actions';
 
 @Component({
   selector: 'app-add',
@@ -12,7 +13,7 @@ import * as uuid from 'uuid';
 export class AddComponent {
   bookForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private booksService: BooksService) {
+  constructor(private fb: FormBuilder, private store: Store) {
     this.bookForm = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required]
@@ -29,7 +30,7 @@ export class AddComponent {
         }
       }
 
-      this.booksService.addBook(book);
+      this.store.dispatch(addBook({ book }));
     }
   }
 }

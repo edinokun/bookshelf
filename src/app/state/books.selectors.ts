@@ -1,19 +1,24 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { BookState } from "./books.reducers";
+import { BooksState } from "./books.reducers";
 
-export const selectBookState = createFeatureSelector<BookState>('books');
+export const selectBooksState = createFeatureSelector<BooksState>('books');
 
 export const selectAllBooks = createSelector(
-  selectBookState,
-  (state: BookState) => state.books
+  selectBooksState,
+  (state: BooksState) => state.books
 );
 
 export const selectBookLoading = createSelector(
-  selectBookState,
-  (state: BookState) => state.loading
+  selectBooksState,
+  (state: BooksState) => state.loading
 );
 
 export const selectBookError = createSelector(
-  selectBookState,
-  (state: BookState) => state.error
+  selectBooksState,
+  (state: BooksState) => state.error
+);
+
+export const selectIsLoaded = createSelector(
+  selectBooksState,
+  (state: BooksState) => state.loaded
 );

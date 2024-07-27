@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../book/book';
-import { BooksService } from './books.service';
-import { BooksActions } from '../state/books.actions';
 import { Store } from '@ngrx/store';
-import { selectBooks } from '../state/books.selectors';
+import { selectAllBooks } from '../state/books.selectors';
+import { loadBooks } from '../state/books.actions';
 
 @Component({
     selector: 'app-books',
@@ -11,13 +9,11 @@ import { selectBooks } from '../state/books.selectors';
     styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-    books$ = this.store.select(selectBooks);
+    books$ = this.store.select(selectAllBooks);
 
-    constructor(private booksService: BooksService, private store: Store) {}
+    constructor(private store: Store) { }
 
     ngOnInit(): void {
-        this.booksService.getBooks().subscribe((books: Book[]) => {
-            this.store.dispatch(BooksActions.getBooks({ books }))
-        });
+        this.store.dispatch(loadBooks());
     }
 }
